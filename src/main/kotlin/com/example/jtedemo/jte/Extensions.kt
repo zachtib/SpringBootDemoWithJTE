@@ -1,6 +1,7 @@
 package com.example.jtedemo.jte
 
 import gg.jte.TemplateOutput
+import gg.jte.output.PrintWriterOutput
 import org.springframework.ui.Model
 import org.springframework.ui.set
 import javax.servlet.http.HttpServletResponse
@@ -15,4 +16,4 @@ inline fun <reified T : Any> Model.render(templateName: String, responseModel: T
 }
 
 val HttpServletResponse.templateOutput: TemplateOutput
-    get() = OutputStreamTemplateOutput(this.outputStream)
+    get() = PrintWriterOutput(writer)
