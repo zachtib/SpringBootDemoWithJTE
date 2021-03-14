@@ -11,7 +11,8 @@ class Config {
     @Bean
     fun jteViewResolver(): ViewResolver {
         return JteViewResolver(
-            templatePath = Path.of("src", "main", "resources", "templates")
+            templatePath = Path.of("src", "main", "resources", "templates"),
+            templateExtension = ".kte"
         )
     }
 }

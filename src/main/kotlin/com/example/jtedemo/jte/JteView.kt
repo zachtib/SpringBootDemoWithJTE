@@ -10,7 +10,7 @@ class JteView(
     private val templateName: String
 ) : View {
     override fun render(model: MutableMap<String, *>?, request: HttpServletRequest, response: HttpServletResponse) {
-        val modelObject = model?.get(MODEL_OBJECT)!!
+        val modelObject = model?.get(MODEL_OBJECT)
         templateEngine.render(templateName, modelObject, response.templateOutput)
     }
 

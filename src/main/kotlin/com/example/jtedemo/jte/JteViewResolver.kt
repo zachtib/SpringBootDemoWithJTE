@@ -9,7 +9,7 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.*
 
-class JteViewResolver(templatePath: Path) : ViewResolver {
+class JteViewResolver(templatePath: Path, private val templateExtension: String = "") : ViewResolver {
     private val codeResolver: DirectoryCodeResolver = DirectoryCodeResolver(templatePath)
     private val templateEngine: TemplateEngine = TemplateEngine.create(
         codeResolver,
@@ -19,9 +19,10 @@ class JteViewResolver(templatePath: Path) : ViewResolver {
     )
 
     override fun resolveViewName(viewName: String, locale: Locale): View? {
-        val filename: String? = codeResolver.resolve(viewName)
+        val fullViewName = "$viewName$templateExtension"
+        val filename: String? = codeResolver.resolve(fullViewName)
         return if (filename != null) {
-            JteView(templateEngine, viewName)
+            JteView(templateEngine, fullViewName)
         } else {
             null
         }
