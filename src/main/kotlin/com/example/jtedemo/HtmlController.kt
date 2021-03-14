@@ -1,6 +1,6 @@
 package com.example.jtedemo
 
-import com.example.jtedemo.jte.render
+import com.example.jtedemo.jte.modelAndViewOf
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.servlet.ModelAndView
@@ -15,6 +15,6 @@ class HtmlController {
             title = "Hello, World",
             message = "Hello from JTE"
         )
-        return render("hello", result)
+        return modelAndViewOf("hello", result)
     }
 }
