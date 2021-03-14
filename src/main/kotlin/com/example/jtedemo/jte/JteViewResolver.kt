@@ -10,7 +10,9 @@ import java.nio.file.Paths
 import java.util.*
 
 class JteViewResolver(templatePath: Path, private val templateExtension: String = "") : ViewResolver {
+
     private val codeResolver: DirectoryCodeResolver = DirectoryCodeResolver(templatePath)
+
     private val templateEngine: TemplateEngine = TemplateEngine.create(
         codeResolver,
         Paths.get("jte-classes"),

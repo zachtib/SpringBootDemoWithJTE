@@ -9,9 +9,18 @@ class JteView(
     private val templateEngine: TemplateEngine,
     private val templateName: String
 ) : View {
-    override fun render(model: MutableMap<String, *>?, request: HttpServletRequest, response: HttpServletResponse) {
+
+    override fun render(
+        model: MutableMap<String, *>?,
+        request: HttpServletRequest,
+        response: HttpServletResponse
+    ) {
         val modelObject = model?.get(MODEL_OBJECT)
-        templateEngine.render(templateName, modelObject, response.templateOutput)
+        templateEngine.render(
+            templateName,
+            modelObject,
+            response.templateOutput
+        )
     }
 
     override fun getContentType(): String = "text/html"
